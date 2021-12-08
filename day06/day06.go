@@ -9,55 +9,42 @@ import (
 
 type Sea struct {
 	day  int
-	fish []Fish
-}
-
-type Fish struct {
-	dayCreated int
-	timer      int
-	fishNumber int
+	fish [9]int
 }
 
 func Day06(inputFileName string) int {
 	sea := processInputToSea(inputFileName)
-	sea = processSeaToFishByDays(80, sea)
-	return len(sea.fish)
+	seaTotal := processSeaToFishByDays(80, sea)
+	return seaTotal
 }
 
 func Day0602(inputFileName string) int {
 	sea := processInputToSea(inputFileName)
-	sea = processSeaToFishByDays(256, sea)
-	return len(sea.fish)
+	seaTotal := processSeaToFishByDays(256, sea)
+	return seaTotal
 }
 
-func processSeaToFishByDays(days int, sea Sea) Sea {
+func processSeaToFishByDays(days int, sea Sea) int {
 	for day := 1; day <= days; day++ {
-		fishes := sea.fish
-		totalFish := len(fishes)
-		for fishNumber, fish := range fishes {
-			if fish.timer == 0 {
-				fish.timer = 6
-				totalFish = totalFish + 1
-				newFish := Fish{
-					dayCreated: day,
-					timer:      8,
-					fishNumber: totalFish,
-				}
-				fishes = append(fishes, newFish)
+		for i, numFish := range sea.fish {
+			if i == 0 {
+				sea.fish[0] = sea.fish[0] - numFish
+				sea.fish[6] = sea.fish[6] + numFish
+				sea.fish[8] = sea.fish[8] + numFish
 			} else {
-				fish.timer = fish.timer - 1
+				sea.fish[i-1] = sea.fish[i-1] + numFish
+				sea.fish[i] = sea.fish[i] - numFish
 			}
-			fishes[fishNumber] = fish
 		}
-		sea.fish = fishes
 	}
-	return sea
+	total := 0
+	for _, numFish := range sea.fish {
+		total = total + numFish
+	}
+	return total
 }
 
 func processInputToSea(inputFileName string) Sea {
-	sea := Sea{
-		day: 0,
-	}
 	byteContents, err := ioutil.ReadFile(inputFileName)
 	if err != nil {
 		log.Fatalln(err)
@@ -66,22 +53,18 @@ func processInputToSea(inputFileName string) Sea {
 
 	stringParts := strings.Split(contents, ",")
 
-	fishes := []Fish{}
+	fishes := [9]int{}
 
-	for i, fishString := range stringParts {
+	for _, fishString := range stringParts {
 		fishTimer, err := strconv.Atoi(fishString)
 		if err != nil {
 			log.Fatalln(err)
 		}
-		fish := Fish{
-			dayCreated: 0,
-			timer:      fishTimer,
-			fishNumber: i,
-		}
-		fishes = append(fishes, fish)
+		fishes[fishTimer]++
 	}
-
-	sea.fish = fishes
-
+	sea := Sea{
+		day:  0,
+		fish: fishes,
+	}
 	return sea
 }
