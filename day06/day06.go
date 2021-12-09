@@ -1,10 +1,9 @@
 package day06
 
 import (
-	"io/ioutil"
+	"adventofcode21/utility"
 	"log"
 	"strconv"
-	"strings"
 )
 
 type Sea struct {
@@ -45,13 +44,7 @@ func processSeaToFishByDays(days int, sea Sea) int {
 }
 
 func processInputToSea(inputFileName string) Sea {
-	byteContents, err := ioutil.ReadFile(inputFileName)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	contents := string(byteContents)
-
-	stringParts := strings.Split(contents, ",")
+	stringParts := utility.GetCommaSeperatedStringsOneLine(inputFileName)
 
 	fishes := [9]int{}
 
