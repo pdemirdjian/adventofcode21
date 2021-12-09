@@ -8,6 +8,7 @@ import (
 	"adventofcode21/day05"
 	"adventofcode21/day06"
 	"adventofcode21/day07"
+	"adventofcode21/day08"
 	"flag"
 	"log"
 	"strconv"
@@ -64,6 +65,12 @@ func main() {
 		log.Println("Running Day07 Part 2 Code.")
 		log.Println("Day07 Part 2's result is: " + strconv.Itoa(day07.Day0702("./day07/input.txt")))
 		log.Println("Day07 Part 2 Code ran fine!")
+		log.Println("Running Day08 Code.")
+		log.Println("Day08's result is: " + strconv.Itoa(day08.Day08("./day08/input.txt")))
+		log.Println("Day08 Code ran fine!")
+		log.Println("Running Day08 Part 2 Code.")
+		log.Println("Day08 Part 2's result is: " + strconv.Itoa(day08.Day0802("./day08/input.txt")))
+		log.Println("Day08 Part 2 Code ran fine!")
 	case 1:
 		log.Println("Running Day01 Code.")
 		log.Println("Day01's result is: " + strconv.Itoa(day01.Day01("./day01/input.txt")))
@@ -113,6 +120,13 @@ func main() {
 		log.Println("Running Day07 Part 2 Code.")
 		log.Println("Day07 Part 2's result is: " + strconv.Itoa(day07.Day0702("./day07/input.txt")))
 		log.Println("Day07 Part 2 Code ran fine!")
+	case 8:
+		log.Println("Running Day08 Code.")
+		log.Println("Day08's result is: " + strconv.Itoa(day08.Day08("./day08/input.txt")))
+		log.Println("Day08 Code ran fine!")
+		log.Println("Running Day08 Part 2 Code.")
+		log.Println("Day08 Part 2's result is: " + strconv.Itoa(day08.Day0802("./day08/input.txt")))
+		log.Println("Day08 Part 2 Code ran fine!")
 	}
 
 }
