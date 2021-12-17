@@ -10,6 +10,7 @@ import (
 	"adventofcode21/day07"
 	"adventofcode21/day08"
 	"adventofcode21/day09"
+	"adventofcode21/day10"
 	"flag"
 	"log"
 	"strconv"
@@ -72,6 +73,9 @@ func main() {
 		log.Println("Running Day09 Code.")
 		log.Println("Day09's result is: " + strconv.Itoa(day09.Day09("./day09/input.txt")))
 		log.Println("Day09 Code ran fine!")
+		log.Println("Running Day10 Code.")
+		log.Println("Day10's result is: " + strconv.Itoa(day10.Day10("./day10/input.txt")))
+		log.Println("Day10 Code ran fine!")
 	case 1:
 		log.Println("Running Day01 Code.")
 		log.Println("Day01's result is: " + strconv.Itoa(day01.Day01("./day01/input.txt")))
@@ -129,6 +133,10 @@ func main() {
 		log.Println("Running Day09 Code.")
 		log.Println("Day09's result is: " + strconv.Itoa(day09.Day09("./day09/input.txt")))
 		log.Println("Day09 Code ran fine!")
+	case 10:
+		log.Println("Running Day10 Code.")
+		log.Println("Day10's result is: " + strconv.Itoa(day10.Day10("./day10/input.txt")))
+		log.Println("Day10 Code ran fine!")
 	}
 
 }

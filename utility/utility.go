@@ -61,3 +61,12 @@ func GetFloat64ArrFromStringArr(inputs []string) []float64 {
 	}
 	return nums
 }
+
+func PopLastElementStringArr(array []string) []string {
+	length := len(array)
+	if length == 0 {
+		return []string{}
+	} else {
+		return array[:length-1]
+	}
+}
